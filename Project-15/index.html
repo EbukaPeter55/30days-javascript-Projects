@@ -33,7 +33,27 @@
 
 function addItem(e){
     e.preventDefault();
-console.log("Hello");
+    // make us of this keyword to narrow down our search to the exact form we are working with
+  const text = (this.querySelector('[name=item]')).value;
+
+const item = {
+  text,
+  done: false
+};
+
+items.push(item);
+populateList(items, itemsList);
+this.reset();
+}
+
+function populateList(plates = [], platesList){
+plateList.innerHTML = plates.map((plate, i) => {
+return `
+  <li>
+  <label for="">${plate.text}</label>
+  </li>
+`;
+}).join('');
 }
    addItems.addEventListener('submit', addItem);
  
